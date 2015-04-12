@@ -5,6 +5,9 @@ from .serializers.serializer_importer import get_serializer
 from django.db.models.signals import pre_delete, m2m_changed
 from django.dispatch.dispatcher import receiver
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 class SelfPublishModel(object):
     serializer_class = None
@@ -16,6 +19,11 @@ class SelfPublishModel(object):
         super(SelfPublishModel, self).__init__(*args, **kwargs)
         self._serializer = self.serializer_class(instance=self)
         self._set_pre_save_state()
+
+        logger.info("__init__ in SelfPublishModel")
+        logger.info(self)
+        logger.info(args)
+        logger.info(kwargs)
 
     def _set_pre_save_state(self):
         """
@@ -64,7 +72,10 @@ class SelfPublishModel(object):
         publish_model(self, self._serializer, action, changed_fields)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
+        logger.info(self.pk)
+        # if not self.pk:
+        # http://stackoverflow.com/questions/11561722/django-what-is-the-role-of-modelstate
+        if self._state.adding:
             self.action = PUBACTIONS.created
             self.changed_fields = None
         else:
