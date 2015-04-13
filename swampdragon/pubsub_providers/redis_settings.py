@@ -3,6 +3,7 @@ from django.conf import settings
 redis_host = None
 redis_port = None
 redis_db = None
+redis_pass = None
 
 
 def get_redis_host():
@@ -24,3 +25,9 @@ def get_redis_db():
     if not redis_db:
         redis_db = getattr(settings, 'SWAMP_DRAGON_REDIS_DB', 0)
     return redis_db
+
+def get_redis_pass():
+    global redis_pass
+    if not redis_pass:
+        redis_pass = getattr(settings, 'SWAMP_DRAGON_REDIS_PASS', None)
+    return redis_pass

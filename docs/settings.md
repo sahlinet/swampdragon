@@ -4,7 +4,7 @@ Add
 
     # SwampDragon settings
     SWAMP_DRAGON_CONNECTION = ('swampdragon.connections.sockjs_connection.DjangoSubscriberConnection', '/data')
-  
+
 to your settings file.
 
 
@@ -37,15 +37,20 @@ Redis host, default is localhost
 
 
 ### ```SWAMP_DRAGON_REDIS_PORT```
- 
+
 Redis port, default is 6379
 
 
 ### ```SWAMP_DRAGON_REDIS_DB```
 
-Redis database number, default is 0. 
+Redis database number, default is 0.
 
 **Note** that this does not have any effect on Redis PUBSUB.
+
+
+### ```SWAMP_DRAGON_REDIS_PASS```
+
+Password for password-protected Redis server. Defaults to `None`.
 
 
 ### ```SWAMP_DRAGON_HOST```
@@ -61,17 +66,17 @@ This setting will override the default `9999` port
 ## JavaScript settings (settings exposed to clients via JavaScript)
 
 By adding
-    
+
     :::html
     {% load swampdragon_tags %}
-    
+
     <html>
     <body>
     ...
     {% swampdragon_settings %}
     </body>
     </html>
-        
+
 to your template, you can access SwampDragon specific settings within your JavaScript.
 
 You can expose your own settings by setting ```SWAMP_DRAGON``` to a dictionary in your (Django) settings.py file.
@@ -85,12 +90,11 @@ These settings are available  from ```window.swampdragon_settings```.
     <script>
         console.log(window.swampdragon_settings.foo); // output bar
     </script>
-    
-    
+
+
 If you want to access the url for your SwampDragon instance from JavaScript, you can do so with ```window.swamp_dargon_host```.
 
     <script>
         // ouput http://localhost:9999 assuming you are running your server on that url
-        console.log(window.swamp_dargon_host); 
+        console.log(window.swamp_dargon_host);
     </script>
-    
