@@ -26,6 +26,7 @@ def get_redis_db():
         redis_db = getattr(settings, 'SWAMP_DRAGON_REDIS_DB', 0)
     return redis_db
 
+
 def get_redis_pass():
     global redis_pass
     if not redis_pass:

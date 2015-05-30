@@ -7,8 +7,6 @@ This can be achived by using ```publish_data```.
 
 A celery task could look something like this:
     
-    from swampdragon.pubsub_providers.data_publisher import publish_data
-    
     @task()
     def my_task():
         data = get_some_data()  # get_some_data would return a dictionary

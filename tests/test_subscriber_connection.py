@@ -1,4 +1,3 @@
-from sockjs.tornado.session import ConnectionInfo
 from swampdragon.connections.sockjs_connection import SubscriberConnection
 from swampdragon.route_handler import BaseRouter, UnexpectedVerbException
 from swampdragon.testing.dragon_testcase import DragonTestCase
@@ -37,8 +36,7 @@ class TestSubscriberConnection(DragonTestCase):
         Closing a connection should automatically unsubscribe
         from all channels
         """
-        request = ConnectionInfo('127.0.0.1', cookies={}, arguments={}, headers={}, path='/data/983/9cz4ridg/websocket')
-        self.connection.on_open(request)
+        self.connection.on_open(None)
         self.connection.pub_sub.subscribe(['test-channel'], self.connection)
         self.assertIn(self.connection, self.connection.pub_sub.publisher.subscribers['test-channel'])
         self.connection.on_close()

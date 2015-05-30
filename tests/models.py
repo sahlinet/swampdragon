@@ -1,6 +1,6 @@
 from swampdragon.models import SelfPublishModel
 from django.db import models
-from .serializers import FooSelfPubSerializer, BarSelfPubSerializer, BoolSelfPubSerializer
+from .serializers import FooSelfPubSerializer, BarSelfPubSerializer
 
 
 class SDModel(models.Model):
@@ -37,8 +37,3 @@ class BarSelfPub(SelfPublishModel, SDModel):
     serializer_class = BarSelfPubSerializer
     date = models.DateTimeField()
     foo = models.ForeignKey(FooSelfPub, related_name='bars')
-
-
-class BoolSelfPub(SelfPublishModel, SDModel):
-    serializer_class = BoolSelfPubSerializer
-    bool = models.BooleanField(default=False)

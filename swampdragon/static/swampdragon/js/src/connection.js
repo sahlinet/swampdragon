@@ -1,6 +1,7 @@
 require('sockjs'); // browserify shim
 
 var eventHandler = require('./event-handler'),
+    messagehandler = require('./message-handler'),
     channels = require('./channels'),
     connection = {},
     isReady = false,
@@ -58,7 +59,6 @@ function onclose (data) {
         }
     }, (connectionAttempt * 500) + 100);
 }
-
 
 function onmessage (e) {
     if ('data' in e) {

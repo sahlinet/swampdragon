@@ -12,5 +12,3 @@ pubpypi.sh
 node_modules/
 dist/SwampDragon-*
 .tox/
-
-chat_example/swampdragon
