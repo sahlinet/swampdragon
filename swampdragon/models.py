@@ -20,8 +20,8 @@ class SelfPublishModel(object):
         self._serializer = self.serializer_class(instance=self)
         self._set_pre_save_state()
 
-        logger.info("__init__ in SelfPublishModel")
-        logger.info(self)
+        #logger.info("__init__ in SelfPublishModel")
+        #logger.info(self)
         logger.info(args)
         logger.info(kwargs)
 
