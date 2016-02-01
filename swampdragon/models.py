@@ -22,8 +22,8 @@ class SelfPublishModel(object):
 
         #logger.info("__init__ in SelfPublishModel")
         #logger.info(self)
-        logger.info(args)
-        logger.info(kwargs)
+        #logger.info(args)
+        #logger.info(kwargs)
 
     def _set_pre_save_state(self):
         """
