@@ -72,7 +72,7 @@ class SelfPublishModel(object):
         publish_model(self, self._serializer, action, changed_fields)
 
     def save(self, *args, **kwargs):
-        logger.info(self.pk)
+        #logger.info(self.pk)
         # if not self.pk:
         # http://stackoverflow.com/questions/11561722/django-what-is-the-role-of-modelstate
         if self._state.adding:
